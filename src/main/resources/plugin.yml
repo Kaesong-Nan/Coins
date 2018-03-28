@@ -1,0 +1,50 @@
+name: Coins
+version: 1.0
+main: de.max_overlack.coins.Coins
+author: Majoeins
+commands:
+  coins:
+    description: Allows to perform various tasks around coins.
+    usage: /coins help
+  coinstop:
+    description: Shows the players with the most coins.
+    usage: /coinstop
+  pay:
+    description: Allows to transfer coins.
+    usage: /pay <player> <amount>
+permissions:
+  coins.*:
+    description: Lets you do everything.
+    children:
+      coins.admin: true
+      coins.edit.coins.others: true
+  coins.admin:
+    description: Lets you do everything except editing other players money.
+    children:
+      coins.user: true
+      coins.edit.coins: true
+  coins.user:
+    description: All default permissions.
+    children:
+      coins.see.coins: true
+      coins.see.top: true
+      coins.see.coins.others: true
+      coins.pay: true
+  coins.see.coins:
+    description: Allows to see the own amount of coins.
+    default: not op
+  coins.see.top:
+    description: Allows to see the players with most coins.
+    default: not op
+  coins.see.coins.others:
+    description: Allows to see other players amount of coins.
+    default: not op
+  coins.edit.coins:
+    description: Allows to edit the own amount of coins.
+    default: op
+  coins.edit.coins.others:
+    description: Allows to edit other players amount of coins.
+    default: op
+  coins.pay:
+    description: Allows to pay money to other players.
+    default: not op
